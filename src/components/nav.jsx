@@ -1,75 +1,60 @@
-import React, { Component } from "react";
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
 
-class Nav extends Component {
-  render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/">
-              LMS
-            </NavLink>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link active"
-                    aria-current="page"
-                    to="/home"
-                  >
-                    Home
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/author">
-                    Author
-                  </NavLink>
-                </li>
-              </ul>
-              <form className="d-flex">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/login">
-                    Login
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/register">
-                    Register
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    );
-  }
-}
+export default function ButtonAppBar() {
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
 
-export default Nav;
+          <Button href="/home" color="inherit">
+            Home
+          </Button>
+          <Button href="/publisher" color="inherit">
+            Publisher
+          </Button>
+          <Button href="/author" color="inherit">
+            Author
+          </Button>
+          <Button href="/book" color="inherit">
+            Books
+          </Button>
+          <Button href="/booksorder" color="inherit">
+            Booksorder
+          </Button>
+          <Button href="/bookissued" color="inherit">
+            BooksIssue
+          </Button>
+          <Button href="/damagedbook" color="inherit">
+            DamagedBooks
+          </Button>
+          <Button href="/readers" color="inherit">
+            Readers
+          </Button>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Library Managment System
+          </Typography>
+          <Button color="inherit">Logout</Button>
+          <Button color="inherit">Login</Button>
+          <Button color="inherit">Registration</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
