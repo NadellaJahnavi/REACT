@@ -29,23 +29,27 @@ const Nav = () => {
           <Button color="inherit" component={NavLink} to="/home">
             Home
           </Button>
-          <Button color="inherit" component={NavLink} to="/author">
-            Authors
-          </Button>
+          {login.loggedIn && login.role == "admin" && (
+            <Button color="inherit" component={NavLink} to="/author">
+              Authors
+            </Button>
+          )}
           <Button color="inherit" component={NavLink} to="/book">
             Books
           </Button>
           {/*   <Button color="inherit" component={NavLink} to="/users">
             Users
           </Button> */}
-          <Button
-            color="inherit"
-            style={{ marginRight: "auto" }}
-            component={NavLink}
-            to="/users"
-          >
-            Users
-          </Button>
+          {login.loggedIn && login.role == "admin" && (
+            <Button
+              color="inherit"
+              style={{ marginRight: "auto" }}
+              component={NavLink}
+              to="/users"
+            >
+              Users
+            </Button>
+          )}
           {login.loggedIn ? (
             <Button color="inherit" component={NavLink} to="/logout">
               Logout
@@ -55,9 +59,9 @@ const Nav = () => {
               Login
             </Button>
           )}
-          <Button color="inherit" component={NavLink} to="/register">
+          {/* <Button color="inherit" component={NavLink} to="/register">
             Register
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
     </div>

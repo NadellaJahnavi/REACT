@@ -68,7 +68,7 @@ const Login = (props) => {
     if (errors) return;
     dispatch(loginAction(user));
     if (login.loggedIn) {
-      props.history.push("/users");
+      props.history.push("/book");
     }
   };
   return (

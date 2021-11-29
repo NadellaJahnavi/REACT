@@ -38,6 +38,7 @@ function App() {
       <MenuAppBar />
       <Switch>
         <Route path="/login" component={Login} />
+        {/* <Redirect from="/users" to="/books" /> */}
         <Route path="/author" component={Author} />
         <Route exact path="/authors/add" component={Addauthor} />
         <Route path="/authors/update/:authorId" component={UpdateAuthor} />
