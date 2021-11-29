@@ -3,6 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Author from "./components/author";
 import { Route, Switch, Redirect } from "react-router-dom";
+import Login from "./components/login";
 import UpdateAuthor from "./components/updateauthor";
 import Home from "./components/home";
 import Addauthor from "./components/addauthor";
@@ -27,11 +28,16 @@ import UpdateReaders from "./components/updatereaders";
 import Users from "./components/users";
 import AddUsers from "./components/addusers";
 import UpdateUsers from "./components/updateusers";
+import BooksReturn from "./components/booksreturn";
+import AddReturn from "./components/addreturn";
+import UpdateReturn from "./components/updatereturn";
+import Logout from "./components/logout";
 function App() {
   return (
     <div className="App">
       <MenuAppBar />
       <Switch>
+        <Route path="/login" component={Login} />
         <Route path="/author" component={Author} />
         <Route exact path="/authors/add" component={Addauthor} />
         <Route path="/authors/update/:authorId" component={UpdateAuthor} />
@@ -46,6 +52,9 @@ function App() {
         <Route path="/publisher" component={Publishers} />
         <Route path="/booksissued/add" component={Addbookissued} />
         <Route path="/bookissued" component={Bookissued} />
+        <Route path="/returnbooks/add" component={AddReturn} />
+        <Route path="/bookreturn/update/:id" component={UpdateReturn} />
+        <Route path="/bookreturn" component={BooksReturn} />
         <Route path="/damagedbook/add" component={AddDamagedBook} />
         <Route path="/damagedbook/update/:id" component={UpdateDamagedBook} />
         <Route path="/damagedbook" component={DamagedBooks} />
@@ -56,6 +65,7 @@ function App() {
         <Route path="/users/update/:userid" component={UpdateUsers} />
         <Route path="/users" component={Users} />
         <Route exact path="/home" component={Home} />
+        <Route path="/logout" component={Logout} />
       </Switch>
     </div>
   );

@@ -1,60 +1,67 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Badge,
+} from "@mui/material";
 
-export default function ButtonAppBar() {
+import { useSelector } from "react-redux";
+import Users from "./users";
+const Nav = () => {
+  //const classes = useStyles();
+  const login = useSelector((state) => state.login);
+  console.log(login);
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <div>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
+          <Typography
+            variant="h6"
+            style={{
+              padding: "5px",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-
-          <Button href="/home" color="inherit">
+            LMS
+          </Typography>
+          <Button color="inherit" component={NavLink} to="/home">
             Home
           </Button>
-          <Button href="/publisher" color="inherit">
-            Publisher
+          <Button color="inherit" component={NavLink} to="/author">
+            Authors
           </Button>
-          <Button href="/author" color="inherit">
-            Author
-          </Button>
-          <Button href="/book" color="inherit">
+          <Button color="inherit" component={NavLink} to="/book">
             Books
           </Button>
-          <Button href="/booksorder" color="inherit">
-            Booksorder
+          {/*   <Button color="inherit" component={NavLink} to="/users">
+            Users
+          </Button> */}
+          <Button
+            color="inherit"
+            style={{ marginRight: "auto" }}
+            component={NavLink}
+            to="/users"
+          >
+            Users
           </Button>
-          <Button href="/bookissued" color="inherit">
-            BooksIssue
+          {login.loggedIn ? (
+            <Button color="inherit" component={NavLink} to="/logout">
+              Logout
+            </Button>
+          ) : (
+            <Button color="inherit" component={NavLink} to="/login">
+              Login
+            </Button>
+          )}
+          <Button color="inherit" component={NavLink} to="/register">
+            Register
           </Button>
-          <Button href="/damagedbook" color="inherit">
-            DamagedBooks
-          </Button>
-          <Button href="/readers" color="inherit">
-            Readers
-          </Button>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Library Managment System
-          </Typography>
-          <Button color="inherit">Logout</Button>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Registration</Button>
         </Toolbar>
       </AppBar>
-    </Box>
+    </div>
   );
-}
+};
+
+export default Nav;
