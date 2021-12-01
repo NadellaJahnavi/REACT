@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Typography, Button, Box, TextField } from "@mui/material";
+import { Grid, Typography, Button, Box, TextField, Paper } from "@mui/material";
 import axios from "axios";
 import Joi from "joi-browser";
 import Alert from "@mui/material/Alert";
@@ -10,16 +10,12 @@ const AddReturn = (props) => {
   const [bookreturned, setUser] = useState({
     returnedDate: "",
     delayedDays: "",
-    penalty: "",
-    penaltyStatus: "",
     bookid: "",
     userid: "",
   });
   const [errors, setErrors] = useState({
     returnedDate: "",
     delayedDays: "",
-    penalty: "",
-    penaltyStatus: "",
     bookid: "",
     userid: "",
   });
@@ -27,8 +23,6 @@ const AddReturn = (props) => {
   const schema = {
     returnedDate: Joi.date().required(),
     delayedDays: Joi.string().required(),
-    penalty: Joi.string().required(),
-    penaltyStatus: Joi.string().required(),
     bookid: Joi.number().required(),
     userid: Joi.number().required(),
   };
@@ -68,124 +62,93 @@ const AddReturn = (props) => {
   };
   return (
     <div>
-      <Typography variant="h3">Return Book</Typography>
       <Grid container>
         <Grid item xs={4} style={{ marginLeft: "auto", marginRight: "auto" }}>
           {errMsg && <Alert severity="error">{errMsg}</Alert>}
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            style={{
-              border: "1px solid blue",
-              padding: "20px",
-              marginTop: "10px",
-            }}
-          >
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="date"
-                inputFormat="yyyy/MM/dd"
-                variant="outlined"
-                fullWidth
-                label="Returned Date"
-                value={bookreturned.returnedDate}
-                name="returnedDate"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.returnedDate}</Typography>
-              )}
-            </Box>
+          <Paper elevation={3}>
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              style={{
+                padding: "20px",
+                marginTop: "20px",
+              }}
+            >
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="date"
+                  inputFormat="yyyy/MM/dd"
+                  variant="outlined"
+                  fullWidth
+                  label="Returned Date"
+                  value={bookreturned.returnedDate}
+                  name="returnedDate"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">
+                    {errors.returnedDate}
+                  </Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="text"
-                variant="outlined"
-                fullWidth
-                label="DelayedDays"
-                value={bookreturned.delayedDays}
-                name="delayedDays"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.delayedDays}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  label="DelayedDays"
+                  value={bookreturned.delayedDays}
+                  name="delayedDays"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">
+                    {errors.delayedDays}
+                  </Typography>
+                )}
+              </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="BookId"
+                  value={bookreturned.bookid}
+                  name="bookid"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.bookid}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="text"
-                variant="outlined"
-                fullWidth
-                label="Penalty"
-                value={bookreturned.penalty}
-                name="penalty"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.penalty}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="UserId"
+                  value={bookreturned.userid}
+                  name="userid"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.userid}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="text"
-                variant="outlined"
-                fullWidth
-                label="PenaltyStatus"
-                value={bookreturned.penaltyStatus}
-                name="penaltyStatus"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">
-                  {errors.penaltyStatus}
-                </Typography>
-              )}
-            </Box>
-
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="BookId"
-                value={bookreturned.bookid}
-                name="bookid"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.bookid}</Typography>
-              )}
-            </Box>
-
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="UserId"
-                value={bookreturned.userid}
-                name="userid"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.userid}</Typography>
-              )}
-            </Box>
-
-            <Box mt={3}>
-              <Button variant="contained" type="submit" fullWidth>
-                Submit
-              </Button>
-            </Box>
-          </form>
+              <Box mt={3}>
+                <Button variant="contained" type="submit" fullWidth>
+                  Submit
+                </Button>
+              </Box>
+            </form>
+          </Paper>
         </Grid>
       </Grid>
     </div>

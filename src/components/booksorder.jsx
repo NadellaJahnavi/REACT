@@ -26,12 +26,11 @@ class BooksOrder extends React.Component {
       <div className="container">
         <Link
           to="/bookorder/add"
-          className="btn btn-secondary btn-large mt-3 float-end"
+          className="btn btn-secondary btn-large my-3 float-end"
         >
           Add
         </Link>
-        <h1>Order Page</h1>
-        <table className="table w-75 mx-auto mt-5">
+        <table className="table table-info table-striped">
           <thead>
             <tr>
               <th>OrderId</th>
@@ -52,7 +51,7 @@ class BooksOrder extends React.Component {
                   <Link to={`/booksorder/update/${bookorder.orderId}`}>
                     <input
                       type="button"
-                      value="Edit"
+                      value="Update"
                       className="btn btn-secondary me-2"
                     />
                   </Link>

@@ -23,10 +23,13 @@ class Author extends React.Component {
   render() {
     return (
       <div className="container">
-        <Link to="/authors/add" className="btn btn-primary float-end my-3">
+        <Link
+          to="/authors/add"
+          className="btn btn-secondary btn-large my-3 float-end"
+        >
           Add
         </Link>
-        <table className="table table-dark table-striped ">
+        <table className="table table-info table-striped">
           <thead>
             <tr>
               <th>Author Id</th>
@@ -50,14 +53,14 @@ class Author extends React.Component {
                     <input
                       type="button"
                       value="Update"
-                      className="btn btn-primary me-2"
+                      className="btn btn-secondary me-2"
                     />
                   </Link>
 
                   <input
                     type="button"
                     value="Delete"
-                    className="btn btn-danger"
+                    className="btn btn-outline-danger"
                     onClick={() => this.handleDelete(author.authorId)}
                   />
                 </td>

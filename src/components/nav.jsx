@@ -4,6 +4,7 @@ import {
   Toolbar,
   Typography,
   Button,
+  Box,
   IconButton,
   Badge,
 } from "@mui/material";
@@ -34,34 +35,64 @@ const Nav = () => {
               Authors
             </Button>
           )}
-          <Button color="inherit" component={NavLink} to="/book">
-            Books
-          </Button>
-          {/*   <Button color="inherit" component={NavLink} to="/users">
-            Users
-          </Button> */}
+          {login.loggedIn && login.role == "admin" && (
+            <Button color="inherit" component={NavLink} to="/publisher">
+              Publishers
+            </Button>
+          )}
+          {login.loggedIn && login.role == "admin" && (
+            <Button color="inherit" component={NavLink} to="/book">
+              Books
+            </Button>
+          )}
+          {login.loggedIn && login.role == "user" && (
+            <Button color="inherit" component={NavLink} to="/book">
+              Books
+            </Button>
+          )}
           {login.loggedIn && login.role == "admin" && (
             <Button
               color="inherit"
-              style={{ marginRight: "auto" }}
+              // style={{ marginRight: "auto" }}
               component={NavLink}
               to="/users"
             >
               Users
             </Button>
           )}
+          {login.loggedIn && login.role == "admin" && (
+            <Button
+              color="inherit"
+              // style={{ marginRight: "auto", textAlign: "Right" }}
+              component={NavLink}
+              to="/readers"
+            >
+              Readers
+            </Button>
+          )}
           {login.loggedIn ? (
-            <Button color="inherit" component={NavLink} to="/logout">
+            <Button
+              color="inherit"
+              style={{ marginLeft: "auto" }}
+              component={NavLink}
+              to="/logout"
+            >
               Logout
             </Button>
           ) : (
-            <Button color="inherit" component={NavLink} to="/login">
+            <Button
+              color="inherit"
+              style={{ marginLeft: "auto" }}
+              component={NavLink}
+              to="/login"
+            >
               Login
             </Button>
           )}
-          {/* <Button color="inherit" component={NavLink} to="/register">
+
+          <Button color="inherit" component={NavLink} to="/readers/add">
             Register
-          </Button> */}
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

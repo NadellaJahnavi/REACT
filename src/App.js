@@ -37,8 +37,8 @@ function App() {
     <div className="App">
       <MenuAppBar />
       <Switch>
+        <Route path="/home" component={Home} />
         <Route path="/login" component={Login} />
-        {/* <Redirect from="/users" to="/books" /> */}
         <Route path="/author" component={Author} />
         <Route exact path="/authors/add" component={Addauthor} />
         <Route path="/authors/update/:authorId" component={UpdateAuthor} />
@@ -53,7 +53,7 @@ function App() {
         <Route path="/publisher" component={Publishers} />
         <Route path="/booksissued/add" component={Addbookissued} />
         <Route path="/bookissued" component={Bookissued} />
-        <Route path="/returnbooks/add" component={AddReturn} />
+        <Route path="/booksreturn/add" component={AddReturn} />
         <Route path="/bookreturn/update/:id" component={UpdateReturn} />
         <Route path="/bookreturn" component={BooksReturn} />
         <Route path="/damagedbook/add" component={AddDamagedBook} />
@@ -65,7 +65,6 @@ function App() {
         <Route path="/users/addusers" component={AddUsers} />
         <Route path="/users/update/:userid" component={UpdateUsers} />
         <Route path="/users" component={Users} />
-        <Route exact path="/home" component={Home} />
         <Route path="/logout" component={Logout} />
       </Switch>
     </div>

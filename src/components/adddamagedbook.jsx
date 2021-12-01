@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Typography,
-  Button,
-  Box,
-  TextField,
-  Select,
-  InputLabel,
-  FormControl,
-  MenuItem,
-} from "@mui/material";
+import { Grid, Typography, Button, Box, TextField, Paper } from "@mui/material";
 import axios from "axios";
 import Joi from "joi-browser";
 import Alert from "@mui/material/Alert";
@@ -73,68 +63,71 @@ const AddDamagedBook = (props) => {
       <Grid container>
         <Grid item xs={4} style={{ marginLeft: "auto", marginRight: "auto" }}>
           {errMsg && <Alert severity="error">{errMsg}</Alert>}
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            style={{
-              border: "1px solid blue",
-              padding: "20px",
-              marginTop: "10px",
-            }}
-          >
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="Quantity"
-                value={damagedbook.quantity}
-                name="quantity"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.quantity}</Typography>
-              )}
-            </Box>
+          <Paper elevation={3}>
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              style={{
+                padding: "20px",
+                marginTop: "20px",
+              }}
+            >
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="Quantity"
+                  value={damagedbook.quantity}
+                  name="quantity"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.quantity}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type=" text"
-                variant="outlined"
-                fullWidth
-                label="Description"
-                value={damagedbook.description}
-                name="description"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.description}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type=" text"
+                  variant="outlined"
+                  fullWidth
+                  label="Description"
+                  value={damagedbook.description}
+                  name="description"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">
+                    {errors.description}
+                  </Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="BookId"
-                value={damagedbook.bookid}
-                name="bookid"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.bookid}</Typography>
-              )}
-            </Box>
-            <Box mt={3}>
-              <Button variant="contained" type="submit" fullWidth>
-                Submit
-              </Button>
-            </Box>
-          </form>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="BookId"
+                  value={damagedbook.bookid}
+                  name="bookid"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.bookid}</Typography>
+                )}
+              </Box>
+              <Box mt={3}>
+                <Button variant="contained" type="submit" fullWidth>
+                  Submit
+                </Button>
+              </Box>
+            </form>
+          </Paper>
         </Grid>
       </Grid>
     </div>

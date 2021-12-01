@@ -24,13 +24,8 @@ class Users extends React.Component {
   render() {
     return (
       <div className="container">
-        <Link
-          to="/users/addusers"
-          className="btn btn-primary btn-large mb-1 float-end"
-        >
-          Add
-        </Link>
-        <table className="table">
+        <Link to="/users/addusers"></Link>
+        <table className="table table-info table-striped mt-5">
           <thead>
             <tr>
               <th>User Id</th>
@@ -38,7 +33,6 @@ class Users extends React.Component {
               <th>Last Name</th>
               <th>Contact Number</th>
               <th>Date Of Birth</th>
-              <th colSpan="2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -49,21 +43,6 @@ class Users extends React.Component {
                 <td>{user.lastName}</td>
                 <td>{user.mobileno}</td>
                 <td>{user.dateofbirth}</td>
-                <td>
-                  <Link to={`/users/update/${user.userid}`}>
-                    <input
-                      type="button"
-                      value="Update"
-                      className="btn btn-primary me-2"
-                    />
-                  </Link>
-                  <input
-                    type="button"
-                    value="Delete"
-                    className="btn btn-danger"
-                    onClick={() => this.handleDelete(user.userid)}
-                  />
-                </td>
               </tr>
             ))}
           </tbody>

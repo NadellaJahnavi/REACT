@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Typography, Button, Grid, Box, TextField, Alert } from "@mui/material";
+import {
+  Typography,
+  Button,
+  Grid,
+  Box,
+  TextField,
+  Alert,
+  Paper,
+} from "@mui/material";
 import axios from "axios";
 import Joi from "joi-browser";
 const ariaLabel = { "aria-label": "description" };
@@ -61,83 +69,84 @@ const Addauthor = (props) => {
       <Grid container>
         <Grid item xs={4} style={{ marginLeft: "auto", marginRight: "auto" }}>
           {errMsg && <Alert severity="error">{errMsg}</Alert>}
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            style={{
-              border: "1px solid blue",
-              padding: "20px",
-              marginTop: "10px",
-            }}
-          >
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="text"
-                variant="outlined"
-                fullWidth
-                label="FirstName"
-                value={author.firstName}
-                name="firstName"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.firstName}</Typography>
-              )}
-            </Box>
+          <Paper elevation={3}>
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              style={{
+                padding: "20px",
+                marginTop: "20px",
+              }}
+            >
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  label="FirstName"
+                  value={author.firstName}
+                  name="firstName"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.firstName}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type=" text"
-                variant="outlined"
-                fullWidth
-                label="LastName"
-                value={author.lastName}
-                name="lastName"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.lastName}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type=" text"
+                  variant="outlined"
+                  fullWidth
+                  label="LastName"
+                  value={author.lastName}
+                  name="lastName"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.lastName}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="Contactno"
-                value={author.contactno}
-                name="contactno"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.contactno}</Typography>
-              )}
-            </Box>
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="email"
-                variant="outlined"
-                fullWidth
-                label="Email"
-                value={author.email}
-                name="email"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.email}</Typography>
-              )}
-            </Box>
-            <Box mt={3}>
-              <Button variant="contained" type="submit" fullWidth>
-                Submit
-              </Button>
-            </Box>
-          </form>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="Contactno"
+                  value={author.contactno}
+                  name="contactno"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.contactno}</Typography>
+                )}
+              </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="email"
+                  variant="outlined"
+                  fullWidth
+                  label="Email"
+                  value={author.email}
+                  name="email"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.email}</Typography>
+                )}
+              </Box>
+              <Box mt={3}>
+                <Button variant="contained" type="submit" fullWidth>
+                  Submit
+                </Button>
+              </Box>
+            </form>
+          </Paper>
         </Grid>
       </Grid>
     </div>

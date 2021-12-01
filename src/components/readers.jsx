@@ -26,16 +26,13 @@ class Readers extends React.Component {
   render() {
     return (
       <div className="container">
-        <Link to="/readers/add" className="btn btn-primary float-end my-3">
-          Add
-        </Link>
-        <table className="table">
+        <Link to="/readers/add"></Link>
+        <table className="table table-info table-striped mt-5">
           <thead>
             <tr>
               <th>Id</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Password</th>
               <th>MobileNo</th>
               <th>Email</th>
               <th colSpan="2">Actions</th>
@@ -47,18 +44,9 @@ class Readers extends React.Component {
                 <td>{reader.id}</td>
                 <td>{reader.firstName}</td>
                 <td>{reader.lastName}</td>
-                <td>{reader.password}</td>
                 <td>{reader.mobileno}</td>
                 <td>{reader.email}</td>
                 <td>
-                  <Link to={`/readers/update/${reader.id}`}>
-                    <input
-                      type="button"
-                      value="Update"
-                      className="btn btn-secondary me-2"
-                    />
-                  </Link>
-
                   <input
                     type="button"
                     value="Delete"

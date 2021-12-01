@@ -29,10 +29,9 @@ class Publishers extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>Publishers Page</h1>
         <Link
           to="/publisher/add"
-          className="btn btn-outline-info btn-large mb-1 float-end"
+          className="btn btn-secondary btn-large my-3 float-end"
         >
           Add
         </Link>
@@ -67,13 +66,13 @@ class Publishers extends React.Component {
                     <input
                       type="button"
                       value="Update"
-                      className="btn btn-primary me-2"
+                      className="btn btn-secondary me-2"
                     />
                   </Link>
                   <input
                     type="button"
                     value="Delete"
-                    className="btn btn-danger"
+                    className="btn btn-outline-danger"
                     onClick={() => this.handleDelete(publisher.publisherId)}
                   />
                 </td>

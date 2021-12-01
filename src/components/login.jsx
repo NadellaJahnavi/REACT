@@ -13,9 +13,9 @@ import {
 } from "@mui/material";
 import Joi from "joi-browser";
 import Alert from "@mui/material/Alert";
-import { connect } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
 import { loginAction } from "../actions/login-action";
+import { Link } from "react-router-dom";
 
 const ariaLabel = { "aria-label": "description" };
 
@@ -68,12 +68,11 @@ const Login = (props) => {
     if (errors) return;
     dispatch(loginAction(user));
     if (login.loggedIn) {
-      props.history.push("/book");
+      props.history.push("/home");
     }
   };
   return (
     <div>
-      <Typography variant="h3">Login Page</Typography>
       <Grid container>
         <Grid item xs={4} style={{ marginLeft: "auto", marginRight: "auto" }}>
           {login.errMsg && <Alert severity="error">{login.errMsg}</Alert>}
@@ -83,7 +82,7 @@ const Login = (props) => {
               noValidate
               style={{
                 padding: "20px",
-                marginTop: "10px",
+                marginTop: "20px",
               }}
             >
               <Box mb={3}>
@@ -130,11 +129,8 @@ const Login = (props) => {
                   value={user.role}
                   label="Role"
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
+                  <MenuItem value=""></MenuItem>
                   <MenuItem value="admin">Admin</MenuItem>
-                  <MenuItem value="customer">Customer</MenuItem>
                   <MenuItem value="user">User</MenuItem>
                 </Select>
               </FormControl>
@@ -146,6 +142,10 @@ const Login = (props) => {
                   Login
                 </Button>
               </Box>
+              <div className="mt-3">
+                don't have an account{" "}
+                <Link to={"/users/addusers"}>click here</Link> to register
+              </div>
             </form>
           </Paper>
         </Grid>
@@ -154,17 +154,4 @@ const Login = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    login: state.login.login,
-  };
-};
-
-// function to dispatch actions
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loginAction,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps())(Login);
+export default Login;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Typography, Button, Box, TextField } from "@mui/material";
+import { Grid, Typography, Button, Box, TextField, Paper } from "@mui/material";
 import axios from "axios";
 import Joi from "joi-browser";
 import Alert from "@mui/material/Alert";
@@ -66,84 +66,87 @@ const AddOrder = (props) => {
       <Grid container>
         <Grid item xs={4} style={{ marginLeft: "auto", marginRight: "auto" }}>
           {errMsg && <Alert severity="error">{errMsg}</Alert>}
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            style={{
-              border: "1px solid blue",
-              padding: "20px",
-              marginTop: "10px",
-            }}
-          >
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type=" text"
-                variant="outlined"
-                fullWidth
-                label="OrderStatus"
-                value={bookorder.orderStatus}
-                name="orderStatus"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.orderStatus}</Typography>
-              )}
-            </Box>
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="number"
-                variant="outlined"
-                fullWidth
-                label="Quantity"
-                value={bookorder.quantity}
-                name="quantity"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.quantity}</Typography>
-              )}
-            </Box>
+          <Paper elevation={3}>
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              style={{
+                padding: "20px",
+                marginTop: "20px",
+              }}
+            >
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type=" text"
+                  variant="outlined"
+                  fullWidth
+                  label="OrderStatus"
+                  value={bookorder.orderStatus}
+                  name="orderStatus"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">
+                    {errors.orderStatus}
+                  </Typography>
+                )}
+              </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="number"
+                  variant="outlined"
+                  fullWidth
+                  label="Quantity"
+                  value={bookorder.quantity}
+                  name="quantity"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.quantity}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="date"
-                inputFormat="yyyy/MM/dd"
-                variant="outlined"
-                fullWidth
-                label="OrderDate"
-                value={bookorder.orderDate}
-                name="orderDate"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.orderDate}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="date"
+                  inputFormat="yyyy/MM/dd"
+                  variant="outlined"
+                  fullWidth
+                  label="OrderDate"
+                  value={bookorder.orderDate}
+                  name="orderDate"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.orderDate}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="number"
-                variant="outlined"
-                fullWidth
-                label="Bookid"
-                value={bookorder.bookid}
-                name="bookid"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.bookid}</Typography>
-              )}
-            </Box>
-            <Box mt={3}>
-              <Button variant="contained" type="submit" fullWidth>
-                Submit
-              </Button>
-            </Box>
-          </form>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="number"
+                  variant="outlined"
+                  fullWidth
+                  label="Bookid"
+                  value={bookorder.bookid}
+                  name="bookid"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.bookid}</Typography>
+                )}
+              </Box>
+              <Box mt={3}>
+                <Button variant="contained" type="submit" fullWidth>
+                  Submit
+                </Button>
+              </Box>
+            </form>
+          </Paper>
         </Grid>
       </Grid>
     </div>

@@ -12,8 +12,8 @@ const Logout = () => {
   }, []);
   const login = useSelector((state) => state.login);
   return (
-    <div>
-      <Typography>Logged out successfully!</Typography>
+    <div className="container mt-5">
+      <Typography variant="h4">Logged out successfully!</Typography>
     </div>
   );
 };

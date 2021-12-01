@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Typography, Button, Box, TextField } from "@mui/material";
+import { Grid, Typography, Button, Box, TextField, Paper } from "@mui/material";
 import axios from "axios";
 import Joi from "joi-browser";
 import Alert from "@mui/material/Alert";
@@ -15,8 +15,8 @@ const Addbook = (props) => {
     publishedyear: "",
     quantity: "",
     bookcost: "",
-    authorId: "",
-    publisherId: "",
+    firstName: "",
+    publisherName: "",
   });
   const [errors, setErrors] = useState({
     title: "",
@@ -26,8 +26,8 @@ const Addbook = (props) => {
     publishedyear: "",
     quantity: "",
     bookcost: "",
-    authorId: "",
-    publisherId: "",
+    firstName: "",
+    publisherName: "",
   });
   const [errMsg, setErrMsg] = useState("");
   const schema = {
@@ -38,8 +38,8 @@ const Addbook = (props) => {
     publishedyear: Joi.number().required(),
     quantity: Joi.number().required(),
     bookcost: Joi.number().required(),
-    authorId: Joi.number().required(),
-    publisherId: Joi.number().required(),
+    firstName: Joi.string().required(),
+    publisherName: Joi.string().required(),
   };
 
   const validate = () => {
@@ -81,167 +81,172 @@ const Addbook = (props) => {
       <Grid container>
         <Grid item xs={4} style={{ marginLeft: "auto", marginRight: "auto" }}>
           {errMsg && <Alert severity="error">{errMsg}</Alert>}
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            style={{
-              border: "1px solid blue",
-              padding: "20px",
-              marginTop: "10px",
-            }}
-          >
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="text"
-                variant="outlined"
-                fullWidth
-                label="Title"
-                value={book.title}
-                name="title"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.title}</Typography>
-              )}
-            </Box>
+          <Paper elevation={3}>
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              style={{
+                padding: "20px",
+                marginTop: "20px",
+              }}
+            >
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  label="Title"
+                  value={book.title}
+                  name="title"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.title}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="text"
-                variant="outlined"
-                fullWidth
-                label="ISBN Code"
-                value={book.isbncode}
-                name="isbncode"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.isbncode}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  label="ISBN Code"
+                  value={book.isbncode}
+                  name="isbncode"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.isbncode}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="text"
-                variant="outlined"
-                fullWidth
-                label="Subject"
-                value={book.subject}
-                name="subject"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.subject}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  label="Subject"
+                  value={book.subject}
+                  name="subject"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.subject}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="text"
-                variant="outlined"
-                fullWidth
-                label="ShelfDetails"
-                value={book.shelfdetails}
-                name="shelfdetails"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.shelfdetails}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  label="ShelfDetails"
+                  value={book.shelfdetails}
+                  name="shelfdetails"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">
+                    {errors.shelfdetails}
+                  </Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="Published Year"
-                value={book.publishedyear}
-                name="publishedyear"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">
-                  {errors.publishedyear}
-                </Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="Published Year"
+                  value={book.publishedyear}
+                  name="publishedyear"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">
+                    {errors.publishedyear}
+                  </Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="Quantity"
-                value={book.quantity}
-                name="quantity"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.quantity}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="Quantity"
+                  value={book.quantity}
+                  name="quantity"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.quantity}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="BookCost"
-                value={book.bookcost}
-                name="bookcost"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.bookcost}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="BookCost"
+                  value={book.bookcost}
+                  name="bookcost"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.bookcost}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="AuthorId"
-                value={book.authorId}
-                name="authorId"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.bookcost}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  label="firstName"
+                  value={book.firstName}
+                  name="firstName"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">{errors.firstName}</Typography>
+                )}
+              </Box>
 
-            <Box mb={3}>
-              <TextField
-                inputProps={ariaLabel}
-                type="tel"
-                variant="outlined"
-                fullWidth
-                label="PublisherId"
-                value={book.publisherId}
-                name="publisherId"
-                onChange={handleChange}
-              />
-              {errors && (
-                <Typography variant="caption">{errors.publisherId}</Typography>
-              )}
-            </Box>
+              <Box mb={3}>
+                <TextField
+                  inputProps={ariaLabel}
+                  type="tel"
+                  variant="outlined"
+                  fullWidth
+                  label="PublisherName"
+                  value={book.publisherName}
+                  name="publisherName"
+                  onChange={handleChange}
+                />
+                {errors && (
+                  <Typography variant="caption">
+                    {errors.publisherName}
+                  </Typography>
+                )}
+              </Box>
 
-            <Box mt={3}>
-              <Button variant="contained" type="submit" fullWidth>
-                Submit
-              </Button>
-            </Box>
-          </form>
+              <Box mt={3}>
+                <Button variant="contained" type="submit" fullWidth>
+                  Submit
+                </Button>
+              </Box>
+            </form>
+          </Paper>
         </Grid>
       </Grid>
     </div>

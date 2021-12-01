@@ -36,7 +36,7 @@ class AddUsers extends React.Component {
     axios
       .post("http://localhost:8080/lms/addusers", users)
       .then((res) => {
-        this.props.history.push("/users");
+        this.props.history.push("/login");
       })
       .catch((err) => console.log(err));
   };
@@ -44,8 +44,10 @@ class AddUsers extends React.Component {
   render() {
     return (
       <div>
-        <h3>Register Form</h3>
-        <form onSubmit={this.handleSubmit} className="w-50 mx-auto border p-3">
+        <form
+          onSubmit={this.handleSubmit}
+          className="w-50 mx-auto mt-3 border p-3 shadow-lg mb-5 bg-body rounded"
+        >
           <div className="mb-3">
             <label for="exampleInputName" className="form-label">
               First Name

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 class Bookissued extends React.Component {
   state = {
     booksissued: [],
@@ -23,17 +24,17 @@ class Bookissued extends React.Component {
   render() {
     return (
       <div className="container">
-        <Link to="/booksissued/add" className="btn btn-primary float-end my-3">
-          Add
-        </Link>
-        <table className="table table-dark table-striped ">
+        <Link to="/booksissued/add"></Link>
+        <table className="table table-info table-striped mt-5">
           <thead>
             <tr>
-              <th>issueId</th>
-              <th>issueDate</th>
-              <th>dueDate</th>
-
-              <th colSpan="3">Actions</th>
+              <th>IssueId</th>
+              <th>IssueDate</th>
+              <th>DueDate</th>
+              <th>BookId</th>
+              <th>UserId</th>
+              {this.props.login.loggedIn &&
+                this.props.login.role == "admin" && <th>Action</th>}
             </tr>
           </thead>
           <tbody>
@@ -42,24 +43,18 @@ class Bookissued extends React.Component {
                 <td>{bookissued.issueId}</td>
                 <td>{bookissued.issueDate}</td>
                 <td>{bookissued.dueDate}</td>
-                {/* <td>{bookissued.bookid}</td>
-                <td>{bookissued.userid}</td> */}
-                <td>
-                  <Link to={`/booksissued/update/${bookissued.issueId}`}>
+                <td>{bookissued.books.bookid}</td>
+                <td>{bookissued.users.userid}</td>
+                {this.props.login.loggedIn && this.props.login.role == "admin" && (
+                  <td>
                     <input
                       type="button"
-                      value="Update"
-                      className="btn btn-primary me-2"
+                      value="Delete"
+                      className="btn btn-outline-danger"
+                      onClick={() => this.handleDelete(bookissued.issueId)}
                     />
-                  </Link>
-
-                  <input
-                    type="button"
-                    value="Delete"
-                    className="btn btn-danger"
-                    onClick={() => this.handleDelete(bookissued.issueId)}
-                  />
-                </td>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
@@ -69,4 +64,10 @@ class Bookissued extends React.Component {
   }
 }
 
-export default Bookissued;
+const mapStateToProps = (state) => {
+  return {
+    login: state.login,
+  };
+};
+
+export default connect(mapStateToProps)(Bookissued);
