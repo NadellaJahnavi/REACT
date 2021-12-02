@@ -24,13 +24,13 @@ import DamagedBooks from "./components/damagedbooks";
 import UpdateDamagedBook from "./components/updatedamagedbook";
 import Readers from "./components/readers";
 import AddReaders from "./components/addreaders";
-import UpdateReaders from "./components/updatereaders";
+//import UpdateReaders from "./components/updatereaders";
 import Users from "./components/users";
 import AddUsers from "./components/addusers";
-import UpdateUsers from "./components/updateusers";
+// import UpdateUsers from "./components/updateusers";
 import BooksReturn from "./components/booksreturn";
 import AddReturn from "./components/addreturn";
-import UpdateReturn from "./components/updatereturn";
+// import UpdateReturn from "./components/updatereturn";
 import Logout from "./components/logout";
 function App() {
   return (
@@ -54,16 +54,16 @@ function App() {
         <Route path="/booksissued/add" component={Addbookissued} />
         <Route path="/bookissued" component={Bookissued} />
         <Route path="/booksreturn/add" component={AddReturn} />
-        <Route path="/bookreturn/update/:id" component={UpdateReturn} />
+        {/* <Route path="/bookreturn/update/:id" component={UpdateReturn} /> */}
         <Route path="/bookreturn" component={BooksReturn} />
         <Route path="/damagedbook/add" component={AddDamagedBook} />
         <Route path="/damagedbook/update/:id" component={UpdateDamagedBook} />
         <Route path="/damagedbook" component={DamagedBooks} />
         <Route path="/readers/add" component={AddReaders} />
-        <Route exact path="/readers/update/:id" component={UpdateReaders} />
+        {/* <Route exact path="/readers/update/:id" component={UpdateReaders} /> */}
         <Route path="/readers" component={Readers} />
         <Route path="/users/addusers" component={AddUsers} />
-        <Route path="/users/update/:userid" component={UpdateUsers} />
+        {/* <Route path="/users/update/:userid" component={UpdateUsers} /> */}
         <Route path="/users" component={Users} />
         <Route path="/logout" component={Logout} />
       </Switch>

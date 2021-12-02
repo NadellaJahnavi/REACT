@@ -62,7 +62,6 @@ const AddOrder = (props) => {
   };
   return (
     <div>
-      <Typography variant="h3">Order Form</Typography>
       <Grid container>
         <Grid item xs={4} style={{ marginLeft: "auto", marginRight: "auto" }}>
           {errMsg && <Alert severity="error">{errMsg}</Alert>}

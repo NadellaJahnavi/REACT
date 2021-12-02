@@ -12,7 +12,6 @@ class UpdateAuthor extends React.Component {
   };
 
   componentDidMount() {
-    // this.props.match.params.authorId;
     axios
       .get(
         `http://localhost:8080/lms/viewAuthorbyId/${this.props.match.params.authorId}`
@@ -55,7 +54,10 @@ class UpdateAuthor extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className="w-50 mx-auto border p-3">
+        <form
+          onSubmit={this.handleSubmit}
+          className="w-50 mx-auto border p-3 mt-3 shadow-lg mb-3 bg-body rounded"
+        >
           <div className="mb-3">
             <label for="exampleInputName" className="form-label">
               FirstName

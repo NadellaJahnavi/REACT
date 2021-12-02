@@ -54,7 +54,10 @@ class UpdateDamagedBook extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className="w-50 mx-auto border p-3">
+        <form
+          onSubmit={this.handleSubmit}
+          className="w-50 mx-auto border p-3 mt-3 shadow-lg mb-3 bg-body rounded"
+        >
           <div className="mb-3">
             <label for="exampleInputPh" className="form-label">
               Quantity

@@ -65,7 +65,6 @@ const Addauthor = (props) => {
   };
   return (
     <div>
-      <Typography variant="h3">Author section</Typography>
       <Grid container>
         <Grid item xs={4} style={{ marginLeft: "auto", marginRight: "auto" }}>
           {errMsg && <Alert severity="error">{errMsg}</Alert>}
